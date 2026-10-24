@@ -1,5 +1,5 @@
-# Use the official Red Hat Universal Base Image 10
-FROM registry.access.redhat.com/ubi10/ubi
+# Use the official Rocky Universal Base Image 10
+FROM rockylinux/rockylinux:10-ubi
 
 # Maintainer label
 LABEL maintainer="Cody Chapman <cchapman@westgate.bank>"
