@@ -1,0 +1,28 @@
+[Unit]
+Description=Unbound DNS
+
+[Container]
+# 1. Use the official base image
+Image=ghcr.io/west-gate-bank/unbound:latest
+ContainerName=unbound
+
+# Published ports (TCP & UDP)
+#PublishPort=53:53/tcp
+#PublishPort=53:53/udp
+Network=host
+# 5. Enable auto-updates via 'podman auto-update'
+AutoUpdate=registry
+
+# 7. Health Check
+HealthCmd=unbound-control status || exit 1
+HealthStartPeriod=30s
+HealthInterval=30s
+HealthTimeout=5s
+HealthRetries=3
+
+[Service]
+# 6. Configure a systemd-managed restart policy
+Restart=always
+
+[Install]
+WantedBy=default.target
